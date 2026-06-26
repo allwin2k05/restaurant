@@ -1,0 +1,101 @@
+#V2
+SELECT id, name, price FROM menu_item LIMIT 10;
+SELECT count() FROM menu_item GROUP ALL;
+SELECT name, price FROM menu_item;
+INFO FOR DB;
+SELECT id, name, login, login_method FROM user;
+SELECT * FROM category LIMIT 5; SELECT * FROM menu_item LIMIT 5;
+-- Clear existing records
+DELETE category;
+DELETE menu_item;
+-- Create Categories
+CREATE category:biryani CONTENT { name: 'Biryanis', priority: 1, show_in_menu: true };
+CREATE category:starter CONTENT { name: 'Starters', priority: 2, show_in_menu: true };
+CREATE category:drinks CONTENT { name: 'Drinks', priority: 3, show_in_menu: true };
+-- General Biryanis (Biryani's section)
+CREATE menu_item:biryani_rice CONTENT { name: 'Biryani Rice', price: 180, number: 'B01', categories: [category:biryani], priority: 1, created_at: time::now() };
+CREATE menu_item:prawns_biryani CONTENT { name: 'Prawns Biryani', price: 400, number: 'B02', categories: [category:biryani], priority: 2, created_at: time::now() };
+CREATE menu_item:sp_prawns_biryani CONTENT { name: 'SP Prawns Biryani', price: 470, number: 'B03', categories: [category:biryani], priority: 3, created_at: time::now() };
+CREATE menu_item:mixed_biryani CONTENT { name: 'Mixed Biryani', price: 430, number: 'B04', categories: [category:biryani], priority: 4, created_at: time::now() };
+CREATE menu_item:couple_pack_chicken_biryani CONTENT { name: 'Couple Pack Chicken Biryani', price: 500, number: 'B05', categories: [category:biryani], priority: 5, created_at: time::now() };
+-- Chicken Biryanis
+CREATE menu_item:chicken_dum_biryani CONTENT { name: 'Chicken Dum Biryani', price: 300, number: 'CB01', categories: [category:biryani], priority: 6, created_at: time::now() };
+CREATE menu_item:chicken_fry_biryani CONTENT { name: 'Chicken Fry Biryani', price: 310, number: 'CB02', categories: [category:biryani], priority: 7, created_at: time::now() };
+CREATE menu_item:sai_silver_sp_chicken_biryani CONTENT { name: 'Sai Silver SP Chicken Biryani', price: 350, number: 'CB03', categories: [category:biryani], priority: 8, created_at: time::now() };
+CREATE menu_item:chicken_lollypop_biriyani CONTENT { name: 'Chicken Lollypop Biriyani', price: 350, number: 'CB04', categories: [category:biryani], priority: 9, created_at: time::now() };
+CREATE menu_item:chicken_mogalai_biryani CONTENT { name: 'Chicken Mogalai Biryani', price: 370, number: 'CB05', categories: [category:biryani], priority: 10, created_at: time::now() };
+CREATE menu_item:chicken_mysoor_biryani CONTENT { name: 'Chicken Mysoor Biryani', price: 380, number: 'CB06', categories: [category:biryani], priority: 11, created_at: time::now() };
+CREATE menu_item:chicken_ulavacharu_biriyani CONTENT { name: 'Chicken Ulavacharu Biriyani', price: 330, number: 'CB07', categories: [category:biryani], priority: 12, created_at: time::now() };
+CREATE menu_item:chicken_avakaya_biryani CONTENT { name: 'Chicken Avakaya Biryani', price: 300, number: 'CB08', categories: [category:biryani], priority: 13, created_at: time::now() };
+CREATE menu_item:gongura_chicken_biryani CONTENT { name: 'Gongura Chicken Biryani', price: 320, number: 'CB09', categories: [category:biryani], priority: 14, created_at: time::now() };
+-- Mutton Biryanis
+CREATE menu_item:mutton_roast_biryani CONTENT { name: 'Mutton Roast Biryani', price: 450, number: 'MB01', categories: [category:biryani], priority: 15, created_at: time::now() };
+CREATE menu_item:mutton_dum_biryani CONTENT { name: 'Mutton Dum Biryani', price: 420, number: 'MB02', categories: [category:biryani], priority: 16, created_at: time::now() };
+CREATE menu_item:mutton_gongura_biryani CONTENT { name: 'Mutton Gongura Biryani', price: 450, number: 'MB03', categories: [category:biryani], priority: 17, created_at: time::now() };
+CREATE menu_item:mutton_avakaya_biryani CONTENT { name: 'Mutton Avakaya Biryani', price: 430, number: 'MB04', categories: [category:biryani], priority: 18, created_at: time::now() };
+CREATE menu_item:mutton_ulavacharu_biriyani CONTENT { name: 'Mutton Ulavacharu Biriyani', price: 430, number: 'MB05', categories: [category:biryani], priority: 19, created_at: time::now() };
+CREATE menu_item:mutton_fry_biryani CONTENT { name: 'Mutton Fry Biryani', price: 450, number: 'MB06', categories: [category:biryani], priority: 20, created_at: time::now() };
+CREATE menu_item:mutton_keema_biryani CONTENT { name: 'Mutton Keema Biryani', price: 450, number: 'MB07', categories: [category:biryani], priority: 21, created_at: time::now() };
+-- Starters
+CREATE menu_item:chicken_lolypup CONTENT { name: 'Chicken Lolypup', price: 250, number: 'S01', categories: [category:starter], priority: 22, created_at: time::now() };
+CREATE menu_item:dragon_chicken CONTENT { name: 'Dragon Chicken', price: 250, number: 'S02', categories: [category:starter], priority: 23, created_at: time::now() };
+CREATE menu_item:chicken_65 CONTENT { name: 'Chicken 65', price: 250, number: 'S03', categories: [category:starter], priority: 24, created_at: time::now() };
+CREATE menu_item:chicken_manchuria CONTENT { name: 'Chicken Manchuria', price: 250, number: 'S04', categories: [category:starter], priority: 25, created_at: time::now() };
+CREATE menu_item:chilly_chicken CONTENT { name: 'Chilly Chicken', price: 250, number: 'S05', categories: [category:starter], priority: 26, created_at: time::now() };
+CREATE menu_item:chicken_pakodi CONTENT { name: 'Chicken Pakodi', price: 260, number: 'S06', categories: [category:starter], priority: 27, created_at: time::now() };
+CREATE menu_item:chicken_fry CONTENT { name: 'Chicken Fry', price: 260, number: 'S07', categories: [category:starter], priority: 28, created_at: time::now() };
+CREATE menu_item:pepper_chicken CONTENT { name: 'Pepper Chicken', price: 260, number: 'S08', categories: [category:starter], priority: 29, created_at: time::now() };
+CREATE menu_item:kaju_chicken CONTENT { name: 'Kaju Chicken', price: 280, number: 'S09', categories: [category:starter], priority: 30, created_at: time::now() };
+CREATE menu_item:chicken_555 CONTENT { name: 'Chicken 555', price: 250, number: 'S10', categories: [category:starter], priority: 31, created_at: time::now() };
+CREATE menu_item:chicken_wings_5pc CONTENT { name: 'Chicken Wings (5pc)', price: 250, number: 'S11', categories: [category:starter], priority: 32, created_at: time::now() };
+CREATE menu_item:chicken_majestic CONTENT { name: 'Chicken Majestic', price: 250, number: 'S12', categories: [category:starter], priority: 33, created_at: time::now() };
+-- Drinks
+CREATE menu_item:coke CONTENT { name: 'Coke', price: 50, number: 'D01', categories: [category:drinks], priority: 34, created_at: time::now() };
+CREATE menu_item:sprite CONTENT { name: 'Sprite', price: 50, number: 'D02', categories: [category:drinks], priority: 35, created_at: time::now() };
+-- Clear existing records
+DELETE category;
+DELETE menu_item;
+-- Create Categories
+CREATE category:biryani CONTENT { name: 'Biryanis', priority: 1, show_in_menu: true };
+CREATE category:starter CONTENT { name: 'Starters', priority: 2, show_in_menu: true };
+CREATE category:drinks CONTENT { name: 'Drinks', priority: 3, show_in_menu: true };
+-- General Biryanis (Biryani's section)
+CREATE menu_item:biryani_rice CONTENT { name: 'Biryani Rice', price: 180, number: 'B01', categories: [category:biryani], priority: 1, created_at: time::now() };
+CREATE menu_item:prawns_biryani CONTENT { name: 'Prawns Biryani', price: 400, number: 'B02', categories: [category:biryani], priority: 2, created_at: time::now() };
+CREATE menu_item:sp_prawns_biryani CONTENT { name: 'SP Prawns Biryani', price: 470, number: 'B03', categories: [category:biryani], priority: 3, created_at: time::now() };
+CREATE menu_item:mixed_biryani CONTENT { name: 'Mixed Biryani', price: 430, number: 'B04', categories: [category:biryani], priority: 4, created_at: time::now() };
+CREATE menu_item:couple_pack_chicken_biryani CONTENT { name: 'Couple Pack Chicken Biryani', price: 500, number: 'B05', categories: [category:biryani], priority: 5, created_at: time::now() };
+-- Chicken Biryanis
+CREATE menu_item:chicken_dum_biryani CONTENT { name: 'Chicken Dum Biryani', price: 300, number: 'CB01', categories: [category:biryani], priority: 6, created_at: time::now() };
+CREATE menu_item:chicken_fry_biryani CONTENT { name: 'Chicken Fry Biryani', price: 310, number: 'CB02', categories: [category:biryani], priority: 7, created_at: time::now() };
+CREATE menu_item:sai_silver_sp_chicken_biryani CONTENT { name: 'Sai Silver SP Chicken Biryani', price: 350, number: 'CB03', categories: [category:biryani], priority: 8, created_at: time::now() };
+CREATE menu_item:chicken_lollypop_biryani CONTENT { name: 'Chicken Lollypop Biryani', price: 350, number: 'CB04', categories: [category:biryani], priority: 9, created_at: time::now() };
+CREATE menu_item:chicken_mogalai_biryani CONTENT { name: 'Chicken Mogalai Biryani', price: 370, number: 'CB05', categories: [category:biryani], priority: 10, created_at: time::now() };
+CREATE menu_item:chicken_mysore_biryani CONTENT { name: 'Chicken Mysore Biryani', price: 380, number: 'CB06', categories: [category:biryani], priority: 11, created_at: time::now() };
+CREATE menu_item:chicken_ulavacharu_biryani CONTENT { name: 'Chicken Ulavacharu Biryani', price: 330, number: 'CB07', categories: [category:biryani], priority: 12, created_at: time::now() };
+CREATE menu_item:chicken_avakaya_biryani CONTENT { name: 'Chicken Avakaya Biryani', price: 370, number: 'CB08', categories: [category:biryani], priority: 13, created_at: time::now() };
+CREATE menu_item:gongura_chicken_biryani CONTENT { name: 'Gongura Chicken Biryani', price: 320, number: 'CB09', categories: [category:biryani], priority: 14, created_at: time::now() };
+-- Mutton Biryanis
+CREATE menu_item:mutton_roast_biryani CONTENT { name: 'Mutton Roast Biryani', price: 450, number: 'MB01', categories: [category:biryani], priority: 15, created_at: time::now() };
+CREATE menu_item:mutton_dum_biryani CONTENT { name: 'Mutton Dum Biryani', price: 420, number: 'MB02', categories: [category:biryani], priority: 16, created_at: time::now() };
+CREATE menu_item:mutton_gongura_biryani CONTENT { name: 'Mutton Gongura Biryani', price: 450, number: 'MB03', categories: [category:biryani], priority: 17, created_at: time::now() };
+CREATE menu_item:mutton_avakaya_biryani CONTENT { name: 'Mutton Avakaya Biryani', price: 430, number: 'MB04', categories: [category:biryani], priority: 18, created_at: time::now() };
+CREATE menu_item:mutton_ulavacharu_biryani CONTENT { name: 'Mutton Ulavacharu Biryani', price: 430, number: 'MB05', categories: [category:biryani], priority: 19, created_at: time::now() };
+CREATE menu_item:mutton_fry_biryani CONTENT { name: 'Mutton Fry Biryani', price: 450, number: 'MB06', categories: [category:biryani], priority: 20, created_at: time::now() };
+CREATE menu_item:mutton_keema_biryani CONTENT { name: 'Mutton Keema Biryani', price: 450, number: 'MB07', categories: [category:biryani], priority: 21, created_at: time::now() };
+-- Starters
+CREATE menu_item:chicken_lollypop CONTENT { name: 'Chicken Lollypop', price: 250, number: 'S01', categories: [category:starter], priority: 22, created_at: time::now() };
+CREATE menu_item:dragon_chicken CONTENT { name: 'Dragon Chicken', price: 250, number: 'S02', categories: [category:starter], priority: 23, created_at: time::now() };
+CREATE menu_item:chicken_65 CONTENT { name: 'Chicken 65', price: 250, number: 'S03', categories: [category:starter], priority: 24, created_at: time::now() };
+CREATE menu_item:chicken_manchuria CONTENT { name: 'Chicken Manchuria', price: 250, number: 'S04', categories: [category:starter], priority: 25, created_at: time::now() };
+CREATE menu_item:chilly_chicken CONTENT { name: 'Chilly Chicken', price: 250, number: 'S05', categories: [category:starter], priority: 26, created_at: time::now() };
+CREATE menu_item:chicken_pakodi CONTENT { name: 'Chicken Pakodi', price: 260, number: 'S06', categories: [category:starter], priority: 27, created_at: time::now() };
+CREATE menu_item:chicken_fry CONTENT { name: 'Chicken Fry', price: 260, number: 'S07', categories: [category:starter], priority: 28, created_at: time::now() };
+CREATE menu_item:pepper_chicken CONTENT { name: 'Pepper Chicken', price: 260, number: 'S08', categories: [category:starter], priority: 29, created_at: time::now() };
+CREATE menu_item:kaju_chicken CONTENT { name: 'Kaju Chicken', price: 280, number: 'S09', categories: [category:starter], priority: 30, created_at: time::now() };
+CREATE menu_item:chicken_555 CONTENT { name: 'Chicken 555', price: 250, number: 'S10', categories: [category:starter], priority: 31, created_at: time::now() };
+CREATE menu_item:chicken_wings_5_pcs CONTENT { name: 'Chicken Wings (5 pcs)', price: 250, number: 'S11', categories: [category:starter], priority: 32, created_at: time::now() };
+CREATE menu_item:chicken_majestic CONTENT { name: 'Chicken Majestic', price: 250, number: 'S12', categories: [category:starter], priority: 33, created_at: time::now() };
+-- Drinks
+CREATE menu_item:coke CONTENT { name: 'Coke', price: 50, number: 'D01', categories: [category:drinks], priority: 34, created_at: time::now() };
+CREATE menu_item:sprite CONTENT { name: 'Sprite', price: 50, number: 'D02', categories: [category:drinks], priority: 35, created_at: time::now() };

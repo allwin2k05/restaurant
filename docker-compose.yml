@@ -1,0 +1,181 @@
+services:
+  app:
+    image: oven/bun:latest
+    working_dir: /app
+    volumes:
+      # Mount the project from the host, including node_modules installed with Bun
+      - .:/app
+    # VITE_* vars are read by Vite from the mounted .env / .env.local files.
+    # Do not set them here: compose only substitutes from .env (not .env.local),
+    # and container env vars override Vite's file-based loading.
+    # Dev mode with Bun + Vite, binding to all interfaces.
+    # Assumes you've already run `bun install` on the host.
+    command: sh -c "bun run dev -- --host 0.0.0.0 --port 5173"
+    ports:
+      - "5173:5173"
+    depends_on:
+      - surrealdb
+      - printer
+      - payment
+      - sync
+      - tracking
+
+  surrealdb:
+    image: surrealdb/surrealdb:v3.0.5
+    # Same as: surreal start -u root -p root surrealkv://database --bind 0.0.0.0:8001
+    working_dir: /
+    user: "0:0"
+    command: >
+      start --user root --pass root surrealkv://database --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      # Host /database -> container /database (surrealkv://database resolves to ./database = /database)
+      - ./database:/database
+
+  printer:
+    build:
+      context: ./printing
+      dockerfile: Dockerfile
+    image: posr-react-printer:latest
+    working_dir: /app
+    volumes:
+      - ./printing:/app
+      - printer-node_modules:/app/node_modules
+    environment:
+      - PRINT_PORT=3132
+      - PRINT_HOST=0.0.0.0
+    command: sh -c "npm install && node server.js"
+    ports:
+      - "3132:3132"
+    # USB access for local USB printers
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+
+  payment:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./payments:/app
+      - payment-node_modules:/app/node_modules
+    env_file:
+      - ./payments/.env
+    environment:
+      - PAYMENT_PORT=3134
+      - PAYMENT_HOST=0.0.0.0
+      - PAYMENT_BASE_URL=${VITE_PAYMENT_SERVER_URL:-http://localhost:3134}
+      - SURREAL_URL=ws://surrealdb:8000/rpc
+      - SURREAL_NS=posr
+      - SURREAL_DB=posr
+      - SURREAL_USER=root
+      - SURREAL_PASS=root
+      - PAYMENT_LOG_LEVEL=debug
+    command: sh -c "npm install && node server.js"
+    ports:
+      - "3134:3134"
+    depends_on:
+      - surrealdb
+
+  sync:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./sync-service:/app
+      - sync-node_modules:/app/node_modules
+    environment:
+      - SYNC_SERVICE_PORT=3136
+      - SYNC_SERVICE_HOST=0.0.0.0
+      - SYNC_RECONNECT_MS=5000
+      - SYNC_LOG_LEVEL=info
+      - SYNC_CLIENT_ID=${SYNC_CLIENT_ID:-client-001}
+      - SYNC_SOURCE_URL=${SYNC_SOURCE_URL:-ws://surrealdb:8000/rpc}
+      - SYNC_SOURCE_NS=${SYNC_SOURCE_NS:-posr}
+      - SYNC_SOURCE_DB=${SYNC_SOURCE_DB:-posr}
+      - SYNC_SOURCE_USER=${SYNC_SOURCE_USER:-root}
+      - SYNC_SOURCE_PASS=${SYNC_SOURCE_PASS:-root}
+      - SYNC_MASTER_URL=${SYNC_MASTER_URL:-}
+      - SYNC_MASTER_NS=${SYNC_MASTER_NS:-posr}
+      - SYNC_MASTER_DB=${SYNC_MASTER_DB:-posr}
+      - SYNC_MASTER_USER=${SYNC_MASTER_USER:-root}
+      - SYNC_MASTER_PASS=${SYNC_MASTER_PASS:-root}
+      - SYNC_EXCLUDE_TABLES=${SYNC_EXCLUDE_TABLES:-}
+    command: sh -c "npm install && node server.js"
+    ports:
+      - "3136:3136"
+    depends_on:
+      - surrealdb
+    restart: unless-stopped
+
+  tracking:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./tracking-api:/app
+      - tracking-api-node_modules:/app/node_modules
+    environment:
+      - TRACKING_PORT=3138
+      - TRACKING_HOST=0.0.0.0
+      - TRACKING_DB_URL=ws://surrealdb:8000/rpc
+      - TRACKING_DB_NS=posr
+      - TRACKING_DB_NAME=posr
+      - TRACKING_DB_USER=root
+      - TRACKING_DB_PASS=root
+    command: sh -c "npm install && npm start"
+    ports:
+      - "3138:3138"
+    depends_on:
+      - surrealdb
+
+  backup:
+    image: docker:27-cli
+    working_dir: /backup
+    volumes:
+      - ./backups/surrealdb:/backups
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      # Timezone for cron schedule (change if you need local time)
+      - TZ=UTC
+      # SurrealDB auth + target namespace/database for export
+      - SURREAL_USER=root
+      - SURREAL_PASS=root
+      - SURREAL_NAMESPACE=posr
+      - SURREAL_DATABASE=posr
+      # Endpoint used from inside the surrealdb container
+      - SURREAL_ENDPOINT=http://127.0.0.1:8000
+      # Keep only the latest N backup files
+      - BACKUP_RETENTION_COUNT=7
+    depends_on:
+      - surrealdb
+    command: >
+      sh -c '
+        set -eu;
+        mkdir -p /backups;
+        printf "%s\n" \
+          "#!/bin/sh" \
+          "set -eu" \
+          "mkdir -p /backups" \
+          "retention=\$${BACKUP_RETENTION_COUNT:-7}" \
+          "ts=\$$(date -u +%Y%m%dT%H%M%SZ)" \
+          "file=/backups/surrealdb-\$${ts}.surql" \
+          "project=\$${COMPOSE_PROJECT_NAME:-posr-react}" \
+          "db_container=\$${SURREAL_CONTAINER_NAME:-}" \
+          "if [ -z \"\$$db_container\" ]; then db_container=\$$(docker ps --filter \"label=com.docker.compose.project=\$$project\" --filter \"label=com.docker.compose.service=surrealdb\" --format \"{{.Names}}\" | awk \"NR==1{print; exit}\"); fi" \
+          "if [ -z \"\$$db_container\" ]; then echo \"No surrealdb container found\" >&2; exit 1; fi" \
+          "if docker exec \"\$$db_container\" /surreal --log none export --endpoint \"\$${SURREAL_ENDPOINT:-http://127.0.0.1:8000}\" --username \"\$${SURREAL_USER:-root}\" --password \"\$${SURREAL_PASS:-root}\" --namespace \"\$${SURREAL_NAMESPACE:-posr}\" --database \"\$${SURREAL_DATABASE:-posr}\" - > \"\$$file\"; then echo \"Created backup: \$$file\"; else rm -f \"\$$file\"; echo \"Backup export failed\" >&2; exit 1; fi" \
+          "ls -1t /backups/surrealdb-*.surql 2>/dev/null | sed -n \"\$$((retention+1)),\\\$$p\" | xargs -r rm -f" \
+          > /usr/local/bin/run-backup.sh;
+        chmod +x /usr/local/bin/run-backup.sh;
+        {
+          echo "0 0 * * * /usr/local/bin/run-backup.sh";
+          echo "0 12 * * * /usr/local/bin/run-backup.sh";
+        } > /etc/crontabs/root;
+        crond -f -l 8 -L /dev/stdout
+      '
+    restart: unless-stopped
+
+volumes:
+  printer-node_modules:
+  payment-node_modules:
+  sync-node_modules:
+  tracking-api-node_modules:
+

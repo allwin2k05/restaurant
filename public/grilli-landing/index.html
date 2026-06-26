@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap"
+        rel="stylesheet">
+    <link rel="preload" as="image" href="./img/hero-slider-1.jpg">
+    <link rel="preload" as="image" href="./img/hero-slider-2.jpg">
+    <link rel="preload" as="image" href="./img/hero-slider-3.jpg">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/services.css">
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/special.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/testi.css">
+    <link rel="stylesheet" href="./css/strength.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <script defer src="./js/app.js"></script>
+    <link rel="shortcut icon" href="./img/favicon.svg" type="image/svg+xml">
+    <title>Grilli ~ Amazing and Delicious Food</title>
+</head>
+
+<body>
+    <div class="container" id="home">
+        <!-- 
+            PRELOAD
+        -->
+        <div class="preload">
+            <div class="preload-circle"></div>
+            <p>Grilli</p>
+        </div>
+
+
+        <div class="primary-screen">
+            <!-- 
+                TOPBAR 
+            -->
+            <div class="topbar padding-2 over-slider">
+                <div class="topbar-section">
+                    <div class="topbar__item">
+                        <ion-icon name="location-outline"></ion-icon>
+                        <p>12-6, Old Checkpost Center, Auto Nagar, Vijayawada - 520007</p>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="topbar__item">
+                        <ion-icon name="time-outline"></ion-icon>
+                        <p>Hours: 11:30 AM – 4:00 PM & 6:30 PM – 11:45 PM daily</p>
+                    </div>
+                </div>
+                <div class="topbar-section">
+                    <div class="topbar__item">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <p>089194 43535</p>
+                    </div>
+                    <div class="separator"></div>
+                    <div class="topbar__item">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <p>contact@saisilver.com</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 
+                NAV 
+            -->
+            <nav class="padding-2 over-slider">
+                <h1 style="font-family: 'Forum', serif; color: #e4c590; font-size: 2.2rem; font-weight: bold; letter-spacing: 2px;">Sai Silver</h1>
+                <div class="nav__items">
+                    <a href="#home" class="nav-items--active">Home</a>
+                    <a href="#menu">Menus</a>
+                    <a href="#about">About Us</a>
+                    <a href="#chefs">Our Chefs</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="nav-right">
+                    <button class="btn btn-secondary" data-text="Come on!" style="margin-right: 10px;" onclick="document.getElementById('reservation').scrollIntoView({behavior: 'smooth'})">
+                        <span>Find a table</span>
+                    </button>
+                    <button class="btn" data-text="POS System" onclick="window.top.location.href='/login'">
+                        <span>Staff Login</span>
+                    </button>
+                    <div class="aside-open">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </nav>
+
+
+            <!-- 
+                ASIDE (RESPONSIVE)
+            -->
+            <aside>
+                <div class="aside-close">
+                    <ion-icon name="close-circle-outline"></ion-icon>
+                </div>
+                <h1 style="font-family: 'Forum', serif; color: #e4c590; font-size: 2.2rem; font-weight: bold; letter-spacing: 2px; text-align: center; margin-bottom: 20px;">Sai Silver</h1>
+                <div class="nav__items">
+                    <a href="#home" class="nav-items--active"><span>Home</span></a>
+                    <a href="#menu"><span>Menus</span></a>
+                    <a href="#about"><span>About Us</span></a>
+                    <a href="#chefs"><span>Our Chefs</span></a>
+                    <a href="#contact"><span>Contact</span></a>
+                </div>
+                <h2>Visit Us</h2>
+                <p>12-6, Old Checkpost Center, Auto Nagar, Vijayawada - 520007</p>
+                <p>Hours: 11:30 AM – 4:00 PM & 6:30 PM – 11:45 PM</p>
+                <p>contact@saisilver.com</p>
+                <div class="separator"></div>
+                <h3 class="highlight">Booking Request</h3>
+                <strong>
+                    <a href="tel:08919443535">089194 43535</a>
+                </strong>
+                <div class="separator"></div>
+                <button class="btn" data-text="POS System" onclick="window.top.location.href='/login'" style="width: 100%; margin-top: 15px;">
+                    <span>Staff Login</span>
+                </button>
+            </aside>
+            <div class="aside-overlay"></div>
+
+
+            <!-- 
+                HEADER 
+            -->
+            <header class="padding-5">
+                <div class="slider-control slider-prev over-slider">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </div>
+                <div class="slider-control slider-next over-slider">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                </div>
+
+
+                <div class="slider-item">
+                    <div class="slider-bg"><img src="./img/hero-slider-1.jpg"></div>
+                    <h2 reveal class="subtitle" style="--delay-item: 0">Tradational & Hygine</h2>
+                    <h1 reveal class="title" style="--delay-item: 1">For the love of delicious food</h1>
+                    <p reveal class="paragraph" style="--delay-item: 2">Come with family & feel the joy of mouthwatering
+                        food</p>
+                    <button class="btn" data-text="View Our Menu" reveal style="--delay-item: 3" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                        <span>Taste the dish</span>
+                    </button>
+                </div>
+
+                <div class="slider-item">
+                    <div class="slider-bg"><img src="./img/hero-slider-2.jpg"></div>
+                    <h2 reveal class="subtitle" style="--delay-item: 0">Delightful Experience</h2>
+                    <h1 reveal class="title" style="--delay-item: 1">Flavors Inspired by the Seasons</h1>
+                    <p reveal class="paragraph" style="--delay-item: 2">Come with family & feel the joy of mouthwatering
+                        food</p>
+                    <button class="btn" data-text="View Our Menu" reveal style="--delay-item: 3" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                        <span>Taste the dish</span>
+                    </button>
+                </div>
+
+                <div class="slider-item">
+                    <div class="slider-bg"><img src="./img/hero-slider-3.jpg"></div>
+                    <h2 reveal class="subtitle" style="--delay-item: 0">Amazing & Delicious</h2>
+                    <h1 reveal class="title" style="--delay-item: 1">Where every flavor tells a story</h1>
+                    <p reveal class="paragraph" style="--delay-item: 2">Come with family & feel the joy of mouthwatering
+                        food</p>
+                    <button class="btn" data-text="View Our Menu" reveal style="--delay-item: 3" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                        <span>Taste the dish</span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="book over-slider" style="cursor: pointer;" onclick="document.getElementById('reservation').scrollIntoView({behavior: 'smooth'})">
+                <img src="./img/hero-icon.png" alt="Booking icon">
+                <p>Book A Table</p>
+            </div>
+        </div> <!-- primary-screen -->
+        <div class="back-top" title="Go to top">
+            <ion-icon name="caret-up-outline"></ion-icon>
+        </div>
+
+
+        <!-- 
+            SERVICE
+        -->
+        <section class="services padding-2" id="chefs">
+            <h3 class="subtitle">Flavors For Royalty</h3>
+            <h2 class="section-title">Our Premium Services</h2>
+            <p class="paragraph">We provide outstanding hospitality and convenient dining options tailored to your needs.</p>
+            <div class="services-box">
+                <div class="service">
+                    <picture>
+                        <img src="./img/service-1.jpg" alt="Dine-in">
+                    </picture>
+                    <h2>Dine-in</h2>
+                    <button onclick="document.getElementById('reservation').scrollIntoView({behavior: 'smooth'})">Book Table</button>
+                </div>
+                <div class="service">
+                    <picture>
+                        <img src="./img/service-2.jpg" alt="Takeaway">
+                    </picture>
+                    <h2>Takeaway</h2>
+                    <button onclick="window.top.location.href='/login'">Order Takeaway</button>
+                </div>
+                <div class="service">
+                    <picture>
+                        <img src="./img/service-3.jpg" alt="Free Home Delivery">
+                    </picture>
+                    <h2>Home Delivery</h2>
+                    <p style="font-size: 10px; color: #a6a6a6; margin-top: 5px; font-family: 'DM Sans', sans-serif;">Free delivery within 5 km</p>
+                    <button onclick="window.top.location.href='/login'">Order Delivery</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 
+            ABOUT 
+        -->
+        <section class="about padding-2" id="about">
+            <div class="about__info">
+                <h3 class="subtitle">Our Story</h3>
+                <h2 class="section-title">Every Flavor Tells a Story</h2>
+                <p class="paragraph">Sai Silver Dum Biryani challenges the boundaries of cuisine by bringing you the authentic, rich culinary heritage of traditional clay pot biryanis. We combine time-honored slow-cooking (dum) techniques with premium quality ingredients and signature spice blends to create a masterpiece in every bowl. Our staff is dedicated to ensuring you experience the best fine dining hospitality, takeaways, and free home deliveries within 5 km.</p>
+                <h3 class="highlight">Book Through Call</h3>
+                <strong>089194 43535</strong>
+                <button class="btn" data-text="Read more">
+                    <span>Read more</span>
+                </button>
+            </div>
+            <div class="about__image">
+                <div class="badge">
+                    <img src="./img/badge-2.png" alt="About badge">
+                    <img src="./img/badge-2-bg.png" alt="About badge background">
+                </div>
+                <picture>
+                    <img src="./img/about-abs-image.jpg" alt="About abs image">
+                </picture>
+            </div>
+        </section>
+
+
+        <!-- 
+            SPECIAL DISH 
+        -->
+        <section class="special-dish">
+            <div class="special__image">
+                <img src="./img/special-dish-banner.jpg" alt="Special dish banner">
+            </div>
+            <div class="special__info">
+                <img src="./img/badge-1.png" alt="Badge">
+                <h2 class="subtitle">Special Dish</h2>
+                <h1 class="section-title">Lobster Tortellini</h1>
+                <p class="paragraph">This is another dish that will amaze you from the first bite, we present the
+                    Lobster Tortellini that integrates the most special and unique flavors of the house. We elaborate a
+                    versatile dish with a subtle yet aesthetic innovation.</p>
+                <div class="price">
+                    <span>$40.00</span>
+                    <span>$20.00</span>
+                </div>
+                <button class="btn" data-text="View All Menu" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                    <span>View All Menu</span>
+                </button>
+            </div>
+        </section>
+
+
+        <!-- 
+            MENU
+        -->
+        <section class="menu padding-2" id="menu">
+            <h3 class="subtitle over-slider">Special Selection</h3>
+            <h2 class="section-title over-slider">Delicious Menu</h2>
+            <div class="menu-box over-slider"></div>
+
+            <p class="winter over-slider">**During winter daily from <b>7:00 pm</b> to <b>9:00 pm</b></p>
+            <button class="btn over-slider" data-text="View All Menu" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                <span>View All Menu</span>
+            </button>
+
+            <img src="./img/shape-5.png" width="921" height="1036" loading="lazy" alt="shape" class="shape shape-2">
+            <img src="./img/shape-6.png" width="700" height="800" loading="lazy" alt="shape" class="shape shape-3">
+        </section>
+
+
+        <!-- 
+            TESTIMONIALS
+        -->
+        <section class="testi padding-2" id="contact">
+            <h2 class="section-title"><span>”</span>I wanted to thank you for inviting me down for that amazing dinner
+                the other night. The food was extraordinary.</h2>
+            <div class="testi__separator">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="avatar">
+                <img src="./img/testi-avatar.jpg" alt="Avatar image">
+                <h3 class="subtitle">Sam Jhonson</h3>
+            </div>
+        </section>
+
+
+        <!--
+            RESERVATION
+        -->
+        <div class="container-reservation padding-2" id="reservation">
+            <section class="reservation">
+                <form>
+                    <h2 class="section-title">Online Reservation</h2>
+                    <p class="paragraph">Booking request <a href="tel:+88123123456">+88-123-123456</a> or fill out the
+                        order form</p>
+                    <div class="inputs">
+                        <div>
+                            <input class="input-field" type="text" placeholder="Your Name" autocomplete="off" required>
+                            <input class="input-field" type="tel" placeholder="Phone Number" autocomplete="off"
+                                inputmode="numeric" required>
+                        </div>
+                        <div>
+                            <span>
+                                <ion-icon name="person-outline"></ion-icon>
+                                <select name="person" class="input-field" required>
+                                    <option value="1-Person">1 Person</option>
+                                    <option value="2-Person">2 Person</option>
+                                    <option value="3-Person">3 Person</option>
+                                    <option value="4-Person">4 Person</option>
+                                    <option value="5-Person">5 Person</option>
+                                    <option value="6-Person">6 Person</option>
+                                    <option value="7-Person">7 Person</option>
+                                </select>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </span>
+                            <input class="input-field" id="reservation-date" type="date">
+                            <span>
+                                <ion-icon name="time-outline"></ion-icon>
+                                <select name="hour" class="input-field" required>
+                                    <option value="08:00am">08 : 00 am</option>
+                                    <option value="09:00am">09 : 00 am</option>
+                                    <option value="10:00am">10 : 00 am</option>
+                                    <option value="11:00am">11 : 00 am</option>
+                                    <option value="12:00am">12 : 00 am</option>
+                                    <option value="01:00pm">01 : 00 pm</option>
+                                    <option value="02:00pm">02 : 00 pm</option>
+                                    <option value="03:00pm">03 : 00 pm</option>
+                                    <option value="04:00pm">04 : 00 pm</option>
+                                    <option value="05:00pm">05 : 00 pm</option>
+                                    <option value="06:00pm">06 : 00 pm</option>
+                                    <option value="07:00pm">07 : 00 pm</option>
+                                    <option value="08:00pm">08 : 00 pm</option>
+                                    <option value="09:00pm">09 : 00 pm</option>
+                                    <option value="10:00pm">10 : 00 pm</option>
+                                </select>
+                                <ion-icon name="chevron-down-outline"></ion-icon>
+                            </span>
+                        </div>
+                        <textarea class="input-field" cols="30" rows="7" placeholder="Message"></textarea>
+                    </div>
+                    <button class="btn btn-secondary" data-text="Know you will enjoy it">
+                        <span>Book A Table</span>
+                    </button>
+                </form>
+
+                <div class="reservation-right">
+                    <h2 class="section-title">Contact Us</h2>
+                    <h3 class="highlight">Booking Request</h3>
+                    <strong>+88-123-123456</strong>
+                    <div class="separator"></div>
+                    <h3>Location</h3>
+                    <p>Restaurant St, Delicious City, London 9578, UK</p>
+                    <h3>Lunch Time</h3>
+                    <p>Monday to Sunday 11.00 am - 2.30pm</p>
+                    <h3>Dinner Time</h3>
+                    <p>Monday to Sunday 05.00 pm - 10.00pm</p>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- 
+            STRENGTH
+        -->
+        <section class="strength padding-2">
+            <h3 class="subtitle">Why Choose Us</h3>
+            <h2 class="section-title">Our Strength</h2>
+            <div class="strength-box">
+                <div class="strength__item">
+                    <img src="./img/features-icon-1.png" alt="Features image">
+                    <h2>Hygienic Food</h2>
+                    <p>Lorem Ipsum is simply dummy printing and typesetting.</p>
+                </div>
+                <div class="strength__item">
+                    <img src="./img/features-icon-2.png" alt="Features image">
+                    <h2>Fresh Environment</h2>
+                    <p>Lorem Ipsum is simply dummy printing and typesetting.</p>
+                </div>
+                <div class="strength__item">
+                    <img src="./img/features-icon-3.png" alt="Features image">
+                    <h2>Skilled Chefs</h2>
+                    <p>Lorem Ipsum is simply dummy printing and typesetting.</p>
+                </div>
+                <div class="strength__item">
+                    <img src="./img/features-icon-4.png" alt="Features image">
+                    <h2>Event & Party</h2>
+                    <p>Lorem Ipsum is simply dummy printing and typesetting.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 
+            UPDATES
+        -->
+        <section class="updates padding-5">
+            <h3 class="subtitle">Recent Updates</h3>
+            <h2 class="section-title">Upcoming Event</h2>
+            <div class="updates-box">
+                <div class="updates__item">
+                    <img src="./img/event-1.jpg" alt="Updates image">
+                    <h3 class="subtitle">Food, Flavour</h3>
+                    <h2>Flavour so good you’ll try to eat with your eyes.</h2>
+                    <div class="tag-date">16/01/2023</div>
+                </div>
+                <div class="updates__item">
+                    <img src="./img/event-2.jpg" alt="Updates image">
+                    <h3 class="subtitle">Healthy Food</h3>
+                    <h2>Flavour so good you’ll try to eat with your eyes.</h2>
+                    <div class="tag-date">05/01/2023</div>
+                </div>
+                <div class="updates__item">
+                    <img src="./img/event-3.jpg" alt="Updates image">
+                    <h3 class="subtitle">Recipie</h3>
+                    <h2>Flavour so good you’ll try to eat with your eyes.</h2>
+                    <div class="tag-date">29/12/2022</div>
+                </div>
+            </div>
+            <button class="btn" data-text="You'll love it">
+                <span>View Our Blog</span>
+            </button>
+        </section>
+
+
+        <!-- 
+            FOOTER
+        -->
+        <footer>
+            <div class="footer__links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#about">About us</a>
+                <a href="#chefs">Our Chefs</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="getInToch padding-2">
+                <h1 style="font-family: 'Forum', serif; color: #e4c590; font-size: 2.2rem; font-weight: bold; letter-spacing: 2px; margin-bottom: 15px;">Sai Silver</h1>
+                <p class="text">12-6, Old Checkpost Center, Auto Nagar, Vijayawada - 520007</p>
+                <a href="mailto:contact@saisilver.com" class="text">contact@saisilver.com</a>
+                <a href="tel:08919443535" class="text">Booking Request : 089194 43535</a>
+                <p class="text">Hours: 11:30 AM – 4:00 PM & 6:30 PM – 11:45 PM daily</p>
+                <div class="footer-separator"><span></span><span></span><span></span></div>
+                <h2 class="section-title">Get News & Offers</h2>
+                <h3>Subscribe us & Get <span>25% Off.</span></h3>
+                <div class="subscribe">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="email" inputmode="email" placeholder="Your email" maxlength="70">
+                    <button class="btn btn-secondary" data-text="Appreciated!">
+                        <span>Subscribe</span>
+                    </button>
+                </div>
+            </div>
+            <div class="footer__links">
+                <a href="https://www.facebook.com" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://www.youtube.com" target="_blank">Youtube</a>
+                <a href="https://www.google.com/maps" target="_blank">Google Maps</a>
+            </div>
+            <p class="credits">Grilli ~ Designed by <a
+                    href="https://github.com/codewithsadee" target="_blank">codewithsadee</a> ~ Developed by <a
+                    href="https://github.com/iannellotomas" target="_blank">iannellotomas</a></p>
+        </footer>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
