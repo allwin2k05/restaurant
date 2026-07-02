@@ -19,7 +19,7 @@ import {
   HOME
 } from "@/routes/posr.ts";
 import { getUserModules } from "@/lib/access.rules.ts";
-import logoImage from "@/assets/images/logo.jpg";
+import logoImage from "@/assets/images/logo.png";
 
 export const Sidebar = () => {
   const [page, setPage] = useAtom(appPage);
@@ -50,7 +50,7 @@ export const Sidebar = () => {
       <div className="w-full flex flex-col items-center gap-8">
         {/* Brand Logo Header */}
         <div className="flex flex-col items-center justify-center cursor-pointer select-none" onClick={() => navigation(HOME)}>
-          <img src={logoImage} alt="Sai Silver Logo" className="w-16 h-16 object-contain hover:scale-105 transition-transform duration-300 drop-shadow-[0_4px_10px_rgba(228,197,144,0.25)]" />
+          <img src={logoImage} alt="Sai Silver Logo" className="w-24 h-24 object-contain hover:scale-105 transition-transform duration-300 drop-shadow-[0_4px_10px_rgba(228,197,144,0.25)]" />
         </div>
 
         {/* Navigation Items */}
