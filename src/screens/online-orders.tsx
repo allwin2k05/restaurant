@@ -357,7 +357,9 @@ export const OnlineOrders = () => {
         <div className="bg-[#141515] text-white px-5 py-3.5 flex items-center justify-between border-b border-[#e4c590]/15">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <span className="w-9 h-9 rounded-lg bg-gradient-to-tr from-[#e4c590] to-[#c8a973] text-slate-950 flex items-center justify-center font-bold text-lg font-serif-luxury">SS</span>
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-[#e4c590]/40 flex items-center justify-center bg-white">
+                <img src="/logo.jpg" alt="Sai Silver Logo" className="w-full h-full object-cover" />
+              </div>
               <div>
                 <h1 className="text-lg font-black leading-none tracking-wider text-[#e4c590] font-serif-luxury uppercase">Sai Silver Dum Biryani POSS</h1>
                 <span className="text-[9px] text-[#e4c590]/60 font-bold uppercase tracking-[0.2em] font-serif-luxury">Online / Delivery Orders</span>

@@ -173,8 +173,8 @@ export const Login = () => {
       >
         {/* Brand Logo & Title Header */}
         <div className="flex flex-col items-center gap-1 text-center select-none mb-2 cursor-pointer" onClick={() => navigation(HOME)}>
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#e4c590] to-[#c8a973] flex items-center justify-center shadow-[0_4px_24px_rgba(228,197,144,0.25)] mb-3 hover:scale-105 transition-transform duration-300">
-            <span className="text-2xl font-bold text-slate-950 font-serif-luxury">SS</span>
+          <div className="w-24 h-24 rounded-full overflow-hidden border border-[#e4c590]/40 flex items-center justify-center bg-white shadow-[0_4px_24px_rgba(228,197,144,0.25)] mb-3 hover:scale-105 transition-transform duration-300">
+            <img src="/logo.jpg" alt="Sai Silver Logo" className="w-full h-full object-cover" />
           </div>
           <h1 className="text-4xl text-[#e4c590] tracking-widest font-serif-luxury uppercase">Sai Silver Dum Biryani</h1>
           <span className="text-[11px] uppercase font-bold tracking-[0.25em] text-[#e4c590]/60 mt-1">Point of Sale System</span>

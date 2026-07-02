@@ -19,6 +19,7 @@ import {
   HOME
 } from "@/routes/posr.ts";
 import { getUserModules } from "@/lib/access.rules.ts";
+import logoImage from "@/assets/images/logo.jpg";
 
 export const Sidebar = () => {
   const [page, setPage] = useAtom(appPage);
@@ -48,11 +49,8 @@ export const Sidebar = () => {
     <div className="flex flex-col justify-between h-screen items-center py-6 border-r border-[#e4c590]/15 bg-[#0e0d0c]/95 backdrop-blur-xl text-white shadow-[4px_0_24px_rgba(0,0,0,0.7)]">
       <div className="w-full flex flex-col items-center gap-8">
         {/* Brand Logo Header */}
-        <div className="flex flex-col items-center justify-center cursor-pointer" onClick={() => navigation(HOME)}>
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#e4c590] to-[#c8a973] flex items-center justify-center shadow-[0_4px_20px_rgba(228,197,144,0.3)] hover:scale-105 transition-transform duration-300">
-            <span className="text-xl font-bold text-slate-950 font-serif-luxury">SS</span>
-          </div>
-          <span className="text-[11px] uppercase font-black tracking-widest text-[#e4c590]/90 mt-2.5 text-center px-1 font-serif-luxury">Sai Silver</span>
+        <div className="flex flex-col items-center justify-center cursor-pointer select-none" onClick={() => navigation(HOME)}>
+          <img src={logoImage} alt="Sai Silver Logo" className="w-16 h-16 object-contain hover:scale-105 transition-transform duration-300 drop-shadow-[0_4px_10px_rgba(228,197,144,0.25)]" />
         </div>
 
         {/* Navigation Items */}
