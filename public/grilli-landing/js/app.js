@@ -165,16 +165,16 @@ let menu = [
         description: 'Crispy and juicy chicken wings shaped like lollipops, tossed in a hot and spicy sauce.',
     },
     {
-        dish: 'Dragon Chicken',
-        tag: 'Spicy',
-        price: '250',
-        description: 'Crispy chicken strips tossed in a spicy, sweet, and tangy red sauce with crunchy cashews.',
+        dish: 'Butter Naan with Gravy',
+        tag: 'Popular',
+        price: '150',
+        description: 'Soft, fluffy butter naan freshly baked in tandoor, served with our signature rich and creamy masala gravy.',
     },
     {
-        dish: 'Kaju Chicken',
+        dish: 'Kaju Chicken Biryani',
         tag: 'Rich',
-        price: '280',
-        description: 'Stir-fried chicken cooked with premium roasted cashew nuts and select spices.',
+        price: '320',
+        description: 'Delectable biryani cooked with tender chicken pieces, premium roasted cashew nuts, and select spices.',
     },
 ]
 
