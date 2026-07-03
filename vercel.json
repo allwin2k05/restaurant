@@ -2,27 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/grilli-landing/:path*",
-      "destination": "/grilli-landing/:path*"
-    },
-    {
-      "source": "/assets/:path*",
-      "destination": "/assets/:path*"
-    },
-    {
-      "source": "/logo.png",
-      "destination": "/logo.png"
-    },
-    {
-      "source": "/logo.jpg",
-      "destination": "/logo.jpg"
-    },
-    {
-      "source": "/vite.svg",
-      "destination": "/vite.svg"
-    },
-    {
-      "source": "/((?!grilli-landing|assets|logo\\.png|logo\\.jpg|vite\\.svg).*)",
+      "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }
   ]
