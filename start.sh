@@ -4,7 +4,7 @@
 export PORT=${PORT:-8080}
 export SURREAL_USER=${SURREAL_USER:-root}
 export SURREAL_PASS=${SURREAL_PASS:-root}
-export SURREAL_STORE=${SURREAL_STORE:-mem}
+export SURREAL_STORE=${SURREAL_STORE:-surrealkv:///app/database}
 
 # Substitute environment variables in Nginx template
 rm -f /etc/nginx/sites-enabled/default /etc/nginx/conf.d/default.conf

@@ -25,9 +25,10 @@ RUN cd payments && npm install --omit=dev --legacy-peer-deps
 COPY tracking-api/package*.json ./tracking-api/
 RUN cd tracking-api && npm install --omit=dev --legacy-peer-deps
 
-# Copy codebase
+# Copy codebase and pre-seeded database
 COPY payments ./payments
 COPY tracking-api ./tracking-api
+COPY database ./database
 
 # Copy Nginx configuration template
 COPY nginx.conf.template /etc/nginx/nginx.conf.template
