@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/((?!assets/|grilli-landing/|logo.png|logo.jpg|vite.svg).*)",
+      "destination": "/index.html"
+    }
+  ]
+}
