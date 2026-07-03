@@ -36,7 +36,7 @@ export const toSurrealDateTime = (value?: DateInput): SurrealDateTime => {
     return new SurrealDateTime(new Date(value));
   }
 
-  return new SurrealDateTime(value);
+  return new SurrealDateTime(value as any);
 };
 
 export const nowSurrealDateTime = (): SurrealDateTime => {
@@ -92,7 +92,7 @@ export const toLuxonDateTime = (value?: DateInput): LuxonDateTime => {
     return LuxonDateTime.fromMillis(Number(value));
   }
 
-  return LuxonDateTime.fromISO(value);
+  return LuxonDateTime.fromISO(value as any);
 };
 
 export const toJsDate = (value?: DateInput): Date => {
@@ -120,5 +120,5 @@ export const toJsDate = (value?: DateInput): Date => {
     return new Date(Number(value));
   }
 
-  return new Date(value);
+  return new Date(value as any);
 };
