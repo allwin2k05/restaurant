@@ -30,6 +30,49 @@ app.get('/health', (req, res) => {
   res.json({ ok: true, service: 'posr-payment-server' });
 });
 
+app.get('/payments/diagnose', async (req, res) => {
+  const fs = require('fs');
+  const path = require('path');
+  const { Surreal } = require('surrealdb');
+
+  let dbFiles = [];
+  try {
+    dbFiles = fs.readdirSync('/app/database');
+  } catch (e) {
+    dbFiles = [e.message];
+  }
+
+  let dbStatus = '';
+  let dbResult = null;
+  const db = new Surreal();
+  try {
+    await db.connect('ws://127.0.0.1:8000/rpc', {
+      namespace: 'posr',
+      database: 'posr',
+      authentication: {
+        username: 'root',
+        password: 'root'
+      }
+    });
+    dbStatus = 'Connected!';
+    dbResult = await db.query('SELECT id, name, pin, roles FROM user');
+  } catch (e) {
+    dbStatus = 'Connection failed: ' + e.message;
+  } finally {
+    try { await db.close(); } catch (e) {}
+  }
+
+  res.json({
+    env: {
+      SURREAL_STORE: process.env.SURREAL_STORE,
+      SURREAL_URL: process.env.SURREAL_URL,
+    },
+    files: dbFiles,
+    dbStatus,
+    dbResult
+  });
+});
+
 app.use('/payments', paymentsRoutes);
 app.use('/webhooks', webhooksRoutes);
 
