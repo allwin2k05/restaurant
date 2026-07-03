@@ -1,9 +1,11 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    {
-      "source": "/((?!.*\\.).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/login", "destination": "/index.html" },
+    { "source": "/menu", "destination": "/index.html" },
+    { "source": "/orders", "destination": "/index.html" },
+    { "source": "/online-orders", "destination": "/index.html" },
+    { "source": "/delivery", "destination": "/index.html" },
+    { "source": "/admin", "destination": "/index.html" }
   ]
 }
