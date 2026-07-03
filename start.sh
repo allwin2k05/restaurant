@@ -17,7 +17,8 @@ if [ -n "$SURREAL_URL" ]; then
     export TRACKING_DB_URL="$SURREAL_URL"
 else
     # Force local SurrealDB to use the pre-seeded local database
-    export SURREAL_STORE="surrealkv:///app/database"
+    export SURREAL_STORE="surrealkv://database"
+    rm -f /app/database/LOCK
 
     # Start local SurrealDB
     echo "Starting local SurrealDB on 127.0.0.1:8000 using store: $SURREAL_STORE"
