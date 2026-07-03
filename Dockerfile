@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
     procps \
     && rm -rf /var/lib/apt/lists/*
 
-# Install SurrealDB
-RUN curl -sSf https://install.surrealdb.com | sh
+# Copy SurrealDB binary from official image
+COPY --from=surrealdb/surrealdb:latest /surreal /usr/local/bin/surreal
 
 # Set up app directory
 WORKDIR /app
