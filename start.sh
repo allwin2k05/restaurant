@@ -16,11 +16,8 @@ if [ -n "$SURREAL_URL" ]; then
     # Set the same URL for tracking API
     export TRACKING_DB_URL="$SURREAL_URL"
 else
-    # Fallback to 'mem' if SURREAL_STORE is set to unsupported pg/postgres engine
-    if [[ "$SURREAL_STORE" == pg://* || "$SURREAL_STORE" == postgres://* || "$SURREAL_STORE" == postgresql://* ]]; then
-         echo "Warning: PostgreSQL is not supported as a storage engine in SurrealDB v2. Falling back to in-memory store ('mem')."
-         export SURREAL_STORE="mem"
-    fi
+    # Force local SurrealDB to use the pre-seeded local database
+    export SURREAL_STORE="surrealkv:///app/database"
 
     # Start local SurrealDB
     echo "Starting local SurrealDB on 127.0.0.1:8000 using store: $SURREAL_STORE"
