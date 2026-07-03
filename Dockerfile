@@ -1,7 +1,13 @@
-FROM alpine:3.19
+FROM node:20-slim
 
-# Install Node.js, npm, nginx, gettext (for envsubst), bash, and curl
-RUN apk add --no-cache nodejs npm nginx gettext bash curl
+# Install Nginx, curl, gettext-base, ca-certificates, and procps
+RUN apt-get update && apt-get install -y \
+    nginx \
+    curl \
+    gettext-base \
+    ca-certificates \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install SurrealDB
 RUN curl -sSf https://install.surrealdb.com | sh

@@ -7,6 +7,7 @@ export SURREAL_PASS=${SURREAL_PASS:-root}
 export SURREAL_STORE=${SURREAL_STORE:-mem}
 
 # Substitute environment variables in Nginx template
+rm -f /etc/nginx/sites-enabled/default /etc/nginx/conf.d/default.conf
 envsubst '$PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf
 
 # Start SurrealDB
