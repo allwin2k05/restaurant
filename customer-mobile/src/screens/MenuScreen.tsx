@@ -49,8 +49,8 @@ export default function MenuScreen({ cart, addToCart, removeFromCart }: MenuScre
     async function loadData() {
       await connectDB();
       try {
-        const catRes = await db.query<[Category[]]>('SELECT id, name FROM category WHERE show_in_menu = true ORDER BY priority ASC');
-        const itemRes = await db.query<[MenuItem[]]>('SELECT id, name, number, price, categories FROM menu_item ORDER BY priority ASC');
+        const catRes = await db.query<[Category[]]>('SELECT id, name, priority FROM category WHERE show_in_menu = true ORDER BY priority ASC');
+        const itemRes = await db.query<[MenuItem[]]>('SELECT id, name, number, price, categories, priority FROM menu_item ORDER BY priority ASC');
         
         const cats = catRes[0] || [];
         const items = itemRes[0] || [];
