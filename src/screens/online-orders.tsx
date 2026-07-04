@@ -73,7 +73,7 @@ export const OnlineOrders = () => {
     try {
       setLoading(true);
       const [allOrders] = await db.query(
-        `SELECT * FROM ${Tables.orders} ORDER BY created_at DESC FETCH customer, user`
+        `SELECT * FROM ${Tables.orders} ORDER BY created_at DESC FETCH customer, user, items, items.item`
       );
       setOrders(allOrders as Order[]);
     } catch (error) {
@@ -698,11 +698,11 @@ export const OnlineOrders = () => {
                 <span className="text-neutral-500 uppercase text-xs tracking-wider">Qty × Price</span>
               </div>
               <div className="flex flex-col gap-3">
-                {selectedOrder.items && selectedOrder.items.length > 0 ? (
+                {selectedOrder.items && selectedOrder.items.length > 0 && typeof selectedOrder.items[0] === 'object' ? (
                   selectedOrder.items.map((item: any, idx: number) => (
                     <div key={idx} className="flex justify-between items-start">
                       <div>
-                        <p className="font-bold text-neutral-800">Item Sample Dish</p>
+                        <p className="font-bold text-neutral-800">{item.item?.name || 'Unknown Item'}</p>
                         {item.comments && <span className="text-xs text-neutral-400">"{item.comments}"</span>}
                       </div>
                       <span className="font-bold text-neutral-700">{item.quantity} × ₹{item.price}</span>
@@ -720,15 +720,15 @@ export const OnlineOrders = () => {
             <div className="bg-white p-4 rounded-lg border border-neutral-200 flex flex-col gap-2 font-semibold text-neutral-600">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span className="text-neutral-800">₹250</span>
+                <span className="text-neutral-800">₹{(selectedOrder.items || []).reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 0)), 0)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Tax (GST 5%)</span>
-                <span className="text-neutral-800">₹{selectedOrder.tax_amount || 13}</span>
+                <span className="text-neutral-800">₹{selectedOrder.tax_amount || 0}</span>
               </div>
               <div className="flex justify-between border-t border-neutral-100 pt-2 font-bold text-base text-neutral-800">
                 <span>Final Amount</span>
-                <span className="text-primary-700">₹{(selectedOrder.items || []).reduce((sum, item) => sum + (item.price * item.quantity), 0) + (selectedOrder.tax_amount || 13)}</span>
+                <span className="text-primary-700">₹{(selectedOrder.items || []).reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 0)), 0) + (selectedOrder.tax_amount || 0)}</span>
               </div>
             </div>
 
