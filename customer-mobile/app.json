@@ -23,6 +23,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "001db4cd-b590-4ad0-ab62-5af1a4b665a3"
+      }
+    },
+    "owner": "saisilverdumbriyanni"
   }
 }
