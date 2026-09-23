@@ -5,7 +5,7 @@ export const Landing = () => {
     <div className="w-screen h-screen overflow-hidden bg-[#0e0d0c]">
       <iframe
         src="/grilli-landing/index.html"
-        title="Grilli Landing Page"
+        title="Sai Silver Landing Page"
         className="w-full h-full border-none m-0 p-0"
       />
     </div>
